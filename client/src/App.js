@@ -1,26 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UserRequest from "./UserRequest";
+import {useMousePosition} from './useMousePosition'
 
 function App() {
+    const position = useMousePosition();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={position.x > 500 ? 'dark' : 'white'}>
+        {position.x > 500 ? console.log("Now is red color",position.x) : console.log("Now is blue color",position.y) }
+      <UserRequest/>
     </div>
   );
 }
-
 export default App;
